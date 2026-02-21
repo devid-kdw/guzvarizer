@@ -34,6 +34,9 @@ class NeonKnob : public juce::Component, private juce::Slider::Listener {
   double maxValue() const noexcept;
   const juce::String& parameterId() const noexcept;
 
+  juce::Slider& slider() noexcept { return knob_; }
+  const juce::Slider& slider() const noexcept { return knob_; }
+
   void paint(juce::Graphics& g) override;
   void resized() override;
 

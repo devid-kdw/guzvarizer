@@ -17,6 +17,9 @@ class VibeModeSegmentedControl : public juce::Component {
 
   void setOnModeChanged(std::function<void(neon::VibeMode)> callback);
 
+  juce::ComboBox& modeSelector() noexcept { return modeSelector_; }
+  const juce::ComboBox& modeSelector() const noexcept { return modeSelector_; }
+
   void resized() override;
 
  private:
@@ -25,6 +28,7 @@ class VibeModeSegmentedControl : public juce::Component {
   juce::TextButton smoothButton_;
   juce::TextButton punchButton_;
   juce::TextButton dirtyButton_;
+  juce::ComboBox modeSelector_;
 
   neon::VibeMode mode_ = neon::VibeMode::kSmooth;
   std::function<void(neon::VibeMode)> onModeChanged_;

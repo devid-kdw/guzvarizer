@@ -14,6 +14,10 @@ inline constexpr const char* kGrit = "grit";
 inline constexpr const char* kAir = "air";
 inline constexpr const char* kAirFreq = "air_freq";
 inline constexpr const char* kVibeMode = "vibe_mode";
+inline constexpr const char* kGuzvanjeEnabled = "guzvanje_enabled";
+inline constexpr const char* kLfoRateHz = "lfo_rate_hz";
+inline constexpr const char* kLfoSyncEnabled = "lfo_sync_enabled";
+inline constexpr const char* kLfoSyncDivision = "lfo_sync_division";
 
 inline constexpr const char* kAccentHue = "accent_hue";
 inline constexpr const char* kGlowIntensity = "glow_intensity";

@@ -2,6 +2,19 @@
 
 namespace neon::ui {
 
+namespace {
+
+int toChoiceId(neon::VibeMode mode) {
+  return static_cast<int>(mode) + 1;
+}
+
+neon::VibeMode toMode(int choiceId) {
+  const auto clamped = juce::jlimit(1, 3, choiceId);
+  return static_cast<neon::VibeMode>(clamped - 1);
+}
+
+}  // namespace
+
 VibeModeSegmentedControl::VibeModeSegmentedControl() {
   smoothButton_.setButtonText("SMOOTH");
   punchButton_.setButtonText("PUNCH");
@@ -16,14 +29,23 @@ VibeModeSegmentedControl::VibeModeSegmentedControl() {
   punchButton_.setClickingTogglesState(true);
   dirtyButton_.setClickingTogglesState(true);
 
-  smoothButton_.onClick = [this] {
-    setMode(neon::VibeMode::kSmooth);
-  };
-  punchButton_.onClick = [this] {
-    setMode(neon::VibeMode::kPunch);
-  };
-  dirtyButton_.onClick = [this] {
-    setMode(neon::VibeMode::kDirty);
+  modeSelector_.addItem("SMOOTH", toChoiceId(neon::VibeMode::kSmooth));
+  modeSelector_.addItem("PUNCH", toChoiceId(neon::VibeMode::kPunch));
+  modeSelector_.addItem("DIRTY", toChoiceId(neon::VibeMode::kDirty));
+  modeSelector_.setVisible(false);
+  addAndMakeVisible(modeSelector_);
+
+  smoothButton_.onClick = [this] { modeSelector_.setSelectedId(toChoiceId(neon::VibeMode::kSmooth)); };
+  punchButton_.onClick = [this] { modeSelector_.setSelectedId(toChoiceId(neon::VibeMode::kPunch)); };
+  dirtyButton_.onClick = [this] { modeSelector_.setSelectedId(toChoiceId(neon::VibeMode::kDirty)); };
+
+  modeSelector_.onChange = [this] {
+    mode_ = toMode(modeSelector_.getSelectedId());
+    selectButtonForMode(mode_);
+
+    if (onModeChanged_) {
+      onModeChanged_(mode_);
+    }
   };
 
   for (auto* button : {&smoothButton_, &punchButton_, &dirtyButton_}) {
@@ -34,16 +56,13 @@ VibeModeSegmentedControl::VibeModeSegmentedControl() {
     addAndMakeVisible(*button);
   }
 
-  selectButtonForMode(mode_);
+  setMode(mode_, juce::dontSendNotification);
 }
 
 void VibeModeSegmentedControl::setMode(neon::VibeMode mode, juce::NotificationType notification) {
+  modeSelector_.setSelectedId(toChoiceId(mode), notification);
   mode_ = mode;
   selectButtonForMode(mode_);
-
-  if (notification != juce::dontSendNotification && onModeChanged_) {
-    onModeChanged_(mode_);
-  }
 }
 
 neon::VibeMode VibeModeSegmentedControl::mode() const noexcept {
@@ -60,6 +79,7 @@ void VibeModeSegmentedControl::resized() {
   smoothButton_.setBounds(area.removeFromLeft(width).reduced(2));
   punchButton_.setBounds(area.removeFromLeft(width).reduced(2));
   dirtyButton_.setBounds(area.reduced(2));
+  modeSelector_.setBounds(0, 0, 0, 0);
 }
 
 void VibeModeSegmentedControl::selectButtonForMode(neon::VibeMode mode) {

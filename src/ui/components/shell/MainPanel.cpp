@@ -5,11 +5,17 @@
 namespace neon::ui {
 
 MainPanel::MainPanel() {
+  themeManager_.addListener(this);
+
   addAndMakeVisible(headerBar_);
   addAndMakeVisible(mainSection_);
   addAndMakeVisible(colorStrip_);
   addAndMakeVisible(toneShaperSection_);
   addAndMakeVisible(footerBar_);
+}
+
+MainPanel::~MainPanel() {
+  themeManager_.removeListener(this);
 }
 
 void MainPanel::paint(juce::Graphics& g) {
@@ -47,6 +53,10 @@ void MainPanel::resized() {
   area.removeFromBottom(metrics::kSectionGap);
 
   mainSection_.setBounds(area);
+}
+
+void MainPanel::themeChanged() {
+  repaint();
 }
 
 }  // namespace neon::ui

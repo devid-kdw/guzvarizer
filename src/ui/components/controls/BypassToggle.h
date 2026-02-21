@@ -15,6 +15,9 @@ class BypassToggle : public juce::Component {
 
   void setOnToggle(std::function<void(bool)> callback);
 
+  juce::ToggleButton& button() noexcept { return button_; }
+  const juce::ToggleButton& button() const noexcept { return button_; }
+
   void paint(juce::Graphics& g) override;
   void resized() override;
 

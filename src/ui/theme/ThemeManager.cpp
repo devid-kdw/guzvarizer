@@ -10,6 +10,19 @@ float to01(float value) {
 
 }  // namespace
 
+void ThemeManager::setState(const ThemeState& state) {
+  state_ = state;
+  listeners_.call(&ThemeManager::Listener::themeChanged);
+}
+
+void ThemeManager::addListener(Listener* listener) {
+  listeners_.add(listener);
+}
+
+void ThemeManager::removeListener(Listener* listener) {
+  listeners_.remove(listener);
+}
+
 juce::Colour ThemeManager::panelBase() const {
   const auto brightness = juce::jmap(to01(state_.panelBrightness), 0.08f, 0.28f);
   return juce::Colour::fromHSV(0.58f, 0.25f, brightness, 1.0f);

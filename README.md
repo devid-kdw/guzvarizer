@@ -39,6 +39,13 @@ Kompresor/
     60_UI_COMPONENT_BLUEPRINT.md
     70_IMPLEMENTATION_STRATEGY.md
     80_RELEASE_TARGETS.md
+    90_MASTER_IMPLEMENTATION_PLAN.md
+    91_FRONTEND_AGENT_PHASED_TASKS.md
+    92_BACKEND_AGENT_PHASED_TASKS.md
+    93_FRONTEND_AGENT_PROMPT.md
+    94_BACKEND_AGENT_PROMPT.md
+    95_PHASE_REPORT_TEMPLATE.md
+    96_AGENT_EXECUTION_RULES.md
   assets/
     fonts/
     images/
@@ -92,7 +99,7 @@ Kompresor/
 - Backend agent: `src/dsp`, `src/host`, DSP i host integracije.
 - Orchestrator: `docs`, interface contracti, integration gate i release redoslijed.
 
-## Implementirano u ovom koraku (UI skeleton)
+## Implementirano u ovom koraku (foundation skeleton)
 
 - plugin shell komponente:
   - `src/ui/components/shell/MainPanel.h`
@@ -114,6 +121,11 @@ Kompresor/
 - UI bridge contracts:
   - `src/ui/bindings/MeterBridgeClient.h`
   - `src/ui/bindings/ParameterBindingAdapter.h`
+- build i host foundation:
+  - `CMakeLists.txt`
+  - `src/host/GuzvarizerProcessor.h`
+  - `src/host/parameters/ParameterLayout.h`
+  - `src/shared/types/LfoSyncDivision.h`
 
 Prije implementacije obavezno procitati:
 
@@ -126,3 +138,8 @@ Prije implementacije obavezno procitati:
 7. `docs/60_UI_COMPONENT_BLUEPRINT.md`
 8. `docs/70_IMPLEMENTATION_STRATEGY.md`
 9. `docs/80_RELEASE_TARGETS.md`
+10. `docs/90_MASTER_IMPLEMENTATION_PLAN.md`
+11. `docs/91_FRONTEND_AGENT_PHASED_TASKS.md`
+12. `docs/92_BACKEND_AGENT_PHASED_TASKS.md`
+13. `docs/95_PHASE_REPORT_TEMPLATE.md`
+14. `docs/96_AGENT_EXECUTION_RULES.md`

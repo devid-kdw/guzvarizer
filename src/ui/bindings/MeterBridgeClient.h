@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 namespace neon::ui {
 
 struct MeterSnapshot {
@@ -14,5 +16,7 @@ class MeterBridgeClient {
   virtual ~MeterBridgeClient() = default;
   virtual MeterSnapshot getLatestSnapshot() const noexcept = 0;
 };
+
+std::unique_ptr<MeterBridgeClient> CreateNullMeterBridgeClient();
 
 }  // namespace neon::ui

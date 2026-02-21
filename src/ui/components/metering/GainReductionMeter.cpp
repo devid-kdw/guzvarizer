@@ -1,9 +1,11 @@
 #include "src/ui/components/metering/GainReductionMeter.h"
 
+#include <cmath>
+
 namespace neon::ui {
 
 GainReductionMeter::GainReductionMeter() {
-  startTimerHz(45);
+  startTimerHz(kUiTimerHz);
 }
 
 void GainReductionMeter::setGainReductionDb(float db) noexcept {
@@ -36,7 +38,8 @@ void GainReductionMeter::paint(juce::Graphics& g) {
 
 void GainReductionMeter::timerCallback() {
   const auto target = targetDb_.load(std::memory_order_relaxed);
-  smoothedDb_ += (target - smoothedDb_) * 0.22f;
+  const auto alpha = 1.0f - std::exp(-1.0f / (kSmoothingTauSeconds * static_cast<float>(kUiTimerHz)));
+  smoothedDb_ += (target - smoothedDb_) * alpha;
   repaint();
 }
 

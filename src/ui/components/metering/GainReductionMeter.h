@@ -17,6 +17,9 @@ class GainReductionMeter : public juce::Component, private juce::Timer {
  private:
   void timerCallback() override;
 
+  static constexpr int kUiTimerHz = 45;
+  static constexpr float kSmoothingTauSeconds = 0.08f;
+
   std::atomic<float> targetDb_{0.0f};
   float smoothedDb_ = 0.0f;
 };

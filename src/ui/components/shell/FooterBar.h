@@ -18,6 +18,9 @@ class FooterBar : public juce::Component {
   void setVibeModeChanged(std::function<void(neon::VibeMode)> callback);
   void setStatusLed(bool on);
 
+  VibeModeSegmentedControl& vibeModeControl() noexcept { return vibeMode_; }
+  const VibeModeSegmentedControl& vibeModeControl() const noexcept { return vibeMode_; }
+
   void paint(juce::Graphics& g) override;
   void resized() override;
 

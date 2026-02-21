@@ -11,9 +11,10 @@
 
 namespace neon::ui {
 
-class MainPanel : public juce::Component {
+class MainPanel : public juce::Component, private ThemeManager::Listener {
  public:
   MainPanel();
+  ~MainPanel() override;
 
   HeaderBar& headerBar() noexcept { return headerBar_; }
   MainSection& mainSection() noexcept { return mainSection_; }
@@ -26,6 +27,8 @@ class MainPanel : public juce::Component {
   void resized() override;
 
  private:
+  void themeChanged() override;
+
   ThemeManager themeManager_;
 
   HeaderBar headerBar_;

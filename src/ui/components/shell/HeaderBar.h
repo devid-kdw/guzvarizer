@@ -17,11 +17,14 @@ class HeaderBar : public juce::Component {
   void setBypass(bool bypassed, juce::NotificationType notification = juce::sendNotificationSync);
   void setBypassChanged(std::function<void(bool)> callback);
 
+  BypassToggle& bypassToggle() noexcept { return bypassToggle_; }
+  const BypassToggle& bypassToggle() const noexcept { return bypassToggle_; }
+
   void paint(juce::Graphics& g) override;
   void resized() override;
 
  private:
-  SectionTitle title_{"NEON COMPRESSOR"};
+  SectionTitle title_{juce::String::fromUTF8("GUŽVARIZER")};
   BypassToggle bypassToggle_;
 };
 

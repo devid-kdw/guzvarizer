@@ -71,8 +71,8 @@ Render order:
 
 ## Binding contracts
 
-- UI controls salju param write event kroz callback/attachment.
-- `ParameterBindingAdapter` radi s realnim vrijednostima parametra (npr. ms, dB, ratio), ne s normaliziranim 0..1 domenskim mappingom.
+- UI controls su vezane na APVTS preko JUCE attachment klasa (`SliderAttachment`, `ButtonAttachment`, `ComboBoxAttachment`).
+- `ParameterBindingAdapter` je thin wrapper oko attachment patterna i ne koristi custom thread-unsafe callback write/read mehanizam.
 - meter komponente citaju samo bridge snapshot, nikad audio buffer.
 - theme kontrole diraju samo UI state (`ThemeManager`).
 

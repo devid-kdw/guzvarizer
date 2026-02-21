@@ -21,6 +21,7 @@ Prije bilo kakvog koda obavezno procitaj redom:
 10. `docs/91_FRONTEND_AGENT_PHASED_TASKS.md`
 11. `docs/95_PHASE_REPORT_TEMPLATE.md`
 12. `docs/96_AGENT_EXECUTION_RULES.md`
+13. `assets/images/guzvarizer-ui-reference.png`
 
 Tvoja pravila rada:
 
@@ -29,6 +30,7 @@ Tvoja pravila rada:
 - Svi artefakti/caches moraju ostati unutar `Kompresor`.
 - Koristi APVTS attachment pattern za binding audio parametara.
 - LFO UI mora biti disabled kad je `guzvanje_enabled = 0`.
+- U Tone Shaperu ne implementirati 2x `AIR`; drugi knob je `COLOR` (`air_freq`).
 
 Izvedba:
 

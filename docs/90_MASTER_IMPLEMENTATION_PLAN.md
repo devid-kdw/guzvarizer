@@ -33,6 +33,7 @@ Zabranjeno:
 12. `docs/92_BACKEND_AGENT_PHASED_TASKS.md` (BE)
 13. `docs/95_PHASE_REPORT_TEMPLATE.md`
 14. `docs/96_AGENT_EXECUTION_RULES.md`
+15. `assets/images/guzvarizer-ui-reference.png`
 
 ## Dependency Policy
 
@@ -155,6 +156,7 @@ Goal:
 FE output:
 
 - theme knobs runtime effect, frame/decor pipeline, labels/fonts
+- u Tone Shaper sekciji final labels su `AIR` + `COLOR` (bez duplog `AIR`)
 
 BE output:
 

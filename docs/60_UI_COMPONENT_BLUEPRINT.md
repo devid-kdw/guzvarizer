@@ -4,6 +4,12 @@
 
 Ovaj dokument mapira trazene UI elemente na konkretne C++ komponente u `src/ui`.
 
+## Visual reference
+
+- Referentna slika: `assets/images/guzvarizer-ui-reference.png`
+- Duplicate `AIR` label u Tone Shaperu je greska reference.
+- Implementacijski zahtjev: jedan `AIR` knob i jedan `COLOR` (`air_freq`) knob.
+
 ## Component map
 
 1. Plugin shell:

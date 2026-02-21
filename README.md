@@ -8,6 +8,12 @@ Ovaj repozitorij je postavljen za paralelan rad vise agenata (frontend, backend,
 - Naziv moda mora biti tocno: `Gužvanje` (sa slovom `ž`).
 - Interni ID-evi u kodu ostaju ASCII (`guzvanje_*`, `lfo_*`) radi host kompatibilnosti.
 
+## UI reference image
+
+- Referentna slika za UI: `assets/images/guzvarizer-ui-reference.png`
+- Napomena: referenca vizualno prikazuje 2x `AIR` u donjoj sekciji, ali to je dizajnerska greska.
+- Ispravan contract je: jedan `AIR` + jedan `COLOR` (`air_freq` / color shift).
+
 ## Zakljucani tech stack
 
 - `C++20`

@@ -19,6 +19,7 @@ Procitati prije Phase FE-0:
 7. `docs/70_IMPLEMENTATION_STRATEGY.md`
 8. `docs/90_MASTER_IMPLEMENTATION_PLAN.md`
 9. `docs/95_PHASE_REPORT_TEMPLATE.md`
+10. `assets/images/guzvarizer-ui-reference.png`
 
 ## FE-0 Environment Bootstrap
 
@@ -53,6 +54,7 @@ Tasks:
 - finaliziraj gornje knobove i bypass UX states
 - potvrdi preset restore prikaz i automation mirror u UI
 - doradi label/readout consistency
+- primijeni reference correction: 2x `AIR` iz slike nije validan; final mora biti `AIR` + `COLOR`
 
 Exit criteria:
 

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
 
-project(Guzvarizer VERSION 0.1.0 LANGUAGES CXX)
+project(Guzvarizer VERSION 0.1.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -41,6 +41,8 @@ juce_generate_juce_header(Guzvarizer)
 
 target_sources(Guzvarizer PRIVATE
   src/dsp/compressor/CompressorCore.cpp
+  src/dsp/modes/GuzvanjeDsp.cpp
+  src/dsp/tone_shaper/ToneShaper.cpp
   src/dsp/util/LfoOscillator.cpp
   src/host/GuzvarizerProcessor.cpp
   src/host/parameters/ParameterLayout.cpp

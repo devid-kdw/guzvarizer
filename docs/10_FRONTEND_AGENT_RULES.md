@@ -38,6 +38,7 @@ Frontend agent je vlasnik:
 6. Z-index pipeline: background -> panels -> controls -> glows -> text -> overlays.
 7. Potrosnja: cilj 60 FPS, fallback 30 FPS bez vidljivog jittera.
 8. `LFO` control mora biti disabled kada je `guzvanje_enabled = 0`.
+9. U Tone Shaper sekciji ne smiju postojati 2 ista `AIR` labela; drugi knob je `COLOR` (`air_freq`).
 
 ## Required components
 

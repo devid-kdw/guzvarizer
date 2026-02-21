@@ -21,6 +21,15 @@
 | lfo_sync_enabled | LFO SYNC | 0/1 | 0 | boolean | 0=Hz mode, 1=tempo sync mode |
 | lfo_sync_division | LFO DIV | 0..7 | 4 | enum | 0=1/1,1=1/2,2=1/4,3=1/8,4=1/16,5=1/8T,6=1/16T,7=1/4D |
 
+## Reference UI correction (AIR duplicate)
+
+- Referentna slika: `assets/images/guzvarizer-ui-reference.png`
+- U slici se pojavljuju 2x `AIR` knob labele u Tone Shaper sekciji.
+- To je dizajnerska greska reference, ne funkcionalni zahtjev.
+- Canonical mapping za projekt je:
+  - `AIR` -> parametar `air`
+  - `COLOR` (ili `AIR FREQ`) -> parametar `air_freq`
+
 ## Mode behavior contract
 
 - `guzvanje_enabled = 0`:

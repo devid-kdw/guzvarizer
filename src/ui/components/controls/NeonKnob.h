@@ -1,0 +1,52 @@
+#pragma once
+
+#include <JuceHeader.h>
+
+#include <functional>
+
+namespace neon::ui {
+
+class NeonKnob : public juce::Component, private juce::Slider::Listener {
+ public:
+  enum class Mapping {
+    kLinear,
+    kLogarithmic,
+  };
+
+  struct Config {
+    juce::String label;
+    juce::String parameterId;
+    double minValue = 0.0;
+    double maxValue = 1.0;
+    double defaultValue = 0.5;
+    Mapping mapping = Mapping::kLinear;
+    juce::Colour ringColour = juce::Colour::fromRGB(0, 255, 210);
+    bool showValueReadout = true;
+  };
+
+  explicit NeonKnob(Config config);
+  ~NeonKnob() override;
+
+  void setOnValueChanged(std::function<void(double)> callback);
+  void setValue(double value, juce::NotificationType notification = juce::sendNotificationSync);
+  double value() const noexcept;
+  double minValue() const noexcept;
+  double maxValue() const noexcept;
+  const juce::String& parameterId() const noexcept;
+
+  void paint(juce::Graphics& g) override;
+  void resized() override;
+
+ private:
+  void sliderValueChanged(juce::Slider* slider) override;
+
+  void updateValueLabel();
+
+  Config config_;
+  juce::Slider knob_;
+  juce::Label label_;
+  juce::Label valueLabel_;
+  std::function<void(double)> onValueChanged_;
+};
+
+}  // namespace neon::ui

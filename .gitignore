@@ -1,0 +1,59 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# CMake and build outputs
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+CTestTestfile.cmake
+Testing/
+
+# Visual Studio
+.vs/
+*.VC.db
+*.VC.opendb
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Xcode
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserstate
+
+# JUCE generated folders (if used)
+Builds/
+JuceLibraryCode/
+
+# Plugin binaries / intermediates
+*.vst3
+*.component
+*.aaxplugin
+*.dSYM/
+*.dll
+*.dylib
+*.so
+*.lib
+*.exp
+*.obj
+*.o
+*.pdb
+*.ilk
+
+# Logs / temp
+*.log
+.cache/
+tmp/

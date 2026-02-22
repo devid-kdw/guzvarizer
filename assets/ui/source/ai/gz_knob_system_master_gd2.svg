@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="740" viewBox="0 0 1200 740" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="capMain" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#465577"/>
+      <stop offset="100%" stop-color="#1A2338"/>
+    </radialGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="740" rx="20" fill="#071129"/>
+  <rect x="12" y="12" width="1176" height="716" rx="16" stroke="#3E6CB3" stroke-opacity="0.75" stroke-width="2"/>
+
+  <text x="48" y="66" fill="#DDEBFF" font-size="36" font-family="Arial, sans-serif">GD-2 Knob System Master</text>
+  <text x="48" y="100" fill="#98B4D6" font-size="18" font-family="Menlo, monospace">Layers: ring_base, ring_active, ticks_base, cap_base, pointer_base, glow_base</text>
+
+  <g transform="translate(175 260)">
+    <circle cx="0" cy="0" r="112" stroke="#2A4D74" stroke-width="12"/>
+    <circle cx="0" cy="0" r="112" stroke="#3AE8FF" stroke-opacity="0.85" stroke-width="12" stroke-linecap="round" stroke-dasharray="492 180" stroke-dashoffset="44"/>
+    <circle cx="0" cy="0" r="94" stroke="#3AE8FF" stroke-opacity="0.7" stroke-width="2" filter="url(#softGlow)"/>
+    <circle cx="0" cy="0" r="76" fill="url(#capMain)"/>
+    <polygon points="0,-78 9,-22 0,-8 -9,-22" fill="#52EEFF"/>
+    <text x="-66" y="162" fill="#DDEBFF" font-size="28" font-family="Menlo, monospace">MAIN 256/512</text>
+  </g>
+
+  <g transform="translate(560 260)">
+    <circle cx="0" cy="0" r="98" stroke="#2C4675" stroke-width="10"/>
+    <circle cx="0" cy="0" r="98" stroke="#FF65B9" stroke-opacity="0.85" stroke-width="10" stroke-linecap="round" stroke-dasharray="430 158" stroke-dashoffset="38"/>
+    <circle cx="0" cy="0" r="82" stroke="#FF65B9" stroke-opacity="0.62" stroke-width="2" filter="url(#softGlow)"/>
+    <circle cx="0" cy="0" r="68" fill="url(#capMain)"/>
+    <polygon points="0,-66 8,-20 0,-7 -8,-20" fill="#FF88CB"/>
+    <text x="-64" y="162" fill="#DDEBFF" font-size="28" font-family="Menlo, monospace">TONE 224/448</text>
+  </g>
+
+  <g transform="translate(920 260)">
+    <circle cx="0" cy="0" r="84" stroke="#2B4568" stroke-width="9"/>
+    <circle cx="0" cy="0" r="84" stroke="#FFE86D" stroke-opacity="0.9" stroke-width="9" stroke-linecap="round" stroke-dasharray="364 136" stroke-dashoffset="30"/>
+    <circle cx="0" cy="0" r="70" stroke="#FFE86D" stroke-opacity="0.62" stroke-width="2" filter="url(#softGlow)"/>
+    <circle cx="0" cy="0" r="58" fill="url(#capMain)"/>
+    <polygon points="0,-56 7,-18 0,-6 -7,-18" fill="#FFF099"/>
+    <text x="-56" y="162" fill="#DDEBFF" font-size="28" font-family="Menlo, monospace">LFO 192/384</text>
+  </g>
+
+  <text x="48" y="530" fill="#B7CAE6" font-size="22" font-family="Menlo, monospace">Knob IDs (11): threshold, attack, release, ratio, output, saturation, harmonics, grit, air, color, lfo_rate</text>
+  <text x="48" y="574" fill="#B7CAE6" font-size="22" font-family="Menlo, monospace">Naming: gz_knob_&lt;id&gt;_&lt;layer&gt;_&lt;state&gt;_&lt;size&gt;.png</text>
+  <text x="48" y="618" fill="#B7CAE6" font-size="22" font-family="Menlo, monospace">@1x + @2x pairs exported for each family</text>
+</svg>

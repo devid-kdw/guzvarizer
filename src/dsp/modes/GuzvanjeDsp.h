@@ -46,6 +46,7 @@ private:
   // LFO
   LfoOscillator lfo_;
   float currentLfoRate_ = 2.0f;
+  float currentEffectiveFreq_ = -1.0f;
   bool lfoSyncEnabled_ = false;
 
   // Gužvanje compression bias constants

@@ -30,7 +30,7 @@ getVibeModePreset(neon::VibeMode mode) noexcept {
         .kneeBias = 4.0f,        // wider, softer knee
         .saturationScale = 0.6f, // less saturation
         .harmonicsScale = 0.5f,
-        .gritScale = 0.3f,
+        .gritScale = 1.0f,
     };
   case VibeMode::kPunch:
     return {

@@ -1,0 +1,256 @@
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/HeaderBar.cpp:1:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/HeaderBar.h:34:22: error: no matching constructor for initialization of 'SectionTitle'
+   34 |   SectionTitle title_{juce::String::fromUTF8("GUŽVARIZER")};
+      |                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:9:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'String' to 'const SectionTitle' for 1st argument
+    9 | class SectionTitle : public juce::Component, private ThemeManager::Listener {
+      |       ^~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:11:12: note: candidate constructor not viable: requires 2 arguments, but 1 was provided
+   11 |   explicit SectionTitle(ThemeManager &themeManager, juce::String text);
+      |            ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:1:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.h:52:18: error: field type 'LfoRateControl' is an abstract class
+   52 |   LfoRateControl lfoRateControl_;
+      |                  ^
+/Users/grzzi/Desktop/Kompresor/src/ui/theme/ThemeManager.h:14:18: note: unimplemented pure virtual method 'themeChanged' in 'LfoRateControl'
+   14 |     virtual void themeChanged() = 0;
+      |                  ^
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:1:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.h:49:26: error: no matching constructor for initialization of 'SectionTitle'
+   49 |   SectionTitle vibeLabel_{"VIBE MODE"};
+      |                          ^~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:9:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'const char[10]' to 'const SectionTitle' for 1st argument
+    9 | class SectionTitle : public juce::Component, private ThemeManager::Listener {
+      |       ^~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:11:12: note: candidate constructor not viable: requires 2 arguments, but 1 was provided
+   11 |   explicit SectionTitle(ThemeManager &themeManager, juce::String text);
+      |            ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:8:29: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::FooterBar *'
+    8 |   themeManager_.addListener(this);
+      |                             ^~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/theme/ThemeManager.h:22:30: note: passing argument to parameter 'listener' here
+   22 |   void addListener(Listener* listener);
+      |                              ^
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:17:3: error: no matching member function for call to 'addAndMakeVisible'
+   17 |   addAndMakeVisible(vibeMode_);
+      |   ^~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:759:10: note: candidate function not viable: no known conversion from 'neon::ui::FooterBar' to 'juce::Component' for object argument
+  759 |     void addAndMakeVisible (Component& child, int zOrder = -1);
+      |          ^
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:747:10: note: candidate function not viable: no known conversion from 'neon::ui::FooterBar' to 'juce::Component' for object argument
+  747 |     void addAndMakeVisible (Component* child, int zOrder = -1);
+      |          ^
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:18:3: error: no matching member function for call to 'addAndMakeVisible'
+   18 |   addAndMakeVisible(guzvanjeToggle_);
+      |   ^~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:759:10: note: candidate function not viable: no known conversion from 'neon::ui::FooterBar' to 'juce::Component' for object argument
+  759 |     void addAndMakeVisible (Component& child, int zOrder = -1);
+      |          ^
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:747:10: note: candidate function not viable: no known conversion from 'neon::ui::FooterBar' to 'juce::Component' for object argument
+  747 |     void addAndMakeVisible (Component* child, int zOrder = -1);
+      |          ^
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:22:56: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::FooterBar *'
+   22 | FooterBar::~FooterBar() { themeManager_.removeListener(this); }
+      |                                                        ^~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/theme/ThemeManager.h:23:33: note: passing argument to parameter 'listener' here
+   23 |   void removeListener(Listener* listener);
+      |                                 ^
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:36:3: error: no matching member function for call to 'repaint'
+   36 |   repaint();
+      |   ^~~~~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:1060:10: note: candidate function not viable: no known conversion from 'neon::ui::FooterBar' to 'juce::Component' for object argument
+ 1060 |     void repaint();
+      |          ^
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:1090:10: note: candidate function not viable: requires single argument 'area', but no arguments were provided
+ 1090 |     void repaint (Rectangle<int> area);
+      |          ^        ~~~~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:1075:10: note: candidate function not viable: requires 4 arguments, but 0 were provided
+ 1075 |     void repaint (int x, int y, int width, int height);
+      |          ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:40:15: error: cannot initialize object parameter of type 'const juce::Component' with an expression of type 'neon::ui::FooterBar'
+   40 |   auto area = getLocalBounds().toFloat();
+      |               ^~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:61:18: error: cannot initialize object parameter of type 'const juce::Component' with an expression of type 'neon::ui::FooterBar'
+   61 |   auto ledArea = getLocalBounds().removeFromRight(42).reduced(8);
+      |                  ^~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:70:15: error: cannot initialize object parameter of type 'const juce::Component' with an expression of type 'neon::ui::FooterBar'
+   70 |   auto area = getLocalBounds().reduced(12);
+      |               ^~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.cpp:81:34: error: no matching member function for call to 'repaint'
+   81 | void FooterBar::themeChanged() { repaint(); }
+      |                                  ^~~~~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:1060:10: note: candidate function not viable: no known conversion from 'neon::ui::FooterBar' to 'juce::Component' for object argument
+ 1060 |     void repaint();
+      |          ^
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:1090:10: note: candidate function not viable: requires single argument 'area', but no arguments were provided
+ 1090 |     void repaint (Rectangle<int> area);
+      |          ^        ~~~~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_gui_basics/components/juce_Component.h:1075:10: note: candidate function not viable: requires 4 arguments, but 0 were provided
+ 1075 |     void repaint (int x, int y, int width, int height);
+      |          ^        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:1:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.h:7:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/MainPanel.h:5:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.h:52:18: error: field type 'LfoRateControl' is an abstract class
+   52 |   LfoRateControl lfoRateControl_;
+      |                  ^
+/Users/grzzi/Desktop/Kompresor/src/ui/theme/ThemeManager.h:14:18: note: unimplemented pure virtual method 'themeChanged' in 'LfoRateControl'
+   14 |     virtual void themeChanged() = 0;
+      |                  ^
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:1:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.h:7:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/MainPanel.h:5:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.h:49:26: error: no matching constructor for initialization of 'SectionTitle'
+   49 |   SectionTitle vibeLabel_{"VIBE MODE"};
+      |                          ^~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:9:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'const char[10]' to 'const SectionTitle' for 1st argument
+    9 | class SectionTitle : public juce::Component, private ThemeManager::Listener {
+      |       ^~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:11:12: note: candidate constructor not viable: requires 2 arguments, but 1 was provided
+   11 |   explicit SectionTitle(ThemeManager &themeManager, juce::String text);
+      |            ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:1:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.h:7:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/MainPanel.h:6:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/HeaderBar.h:34:22: error: no matching constructor for initialization of 'SectionTitle'
+   34 |   SectionTitle title_{juce::String::fromUTF8("GUŽVARIZER")};
+      |                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:9:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'String' to 'const SectionTitle' for 1st argument
+    9 | class SectionTitle : public juce::Component, private ThemeManager::Listener {
+      |       ^~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:11:12: note: candidate constructor not viable: requires 2 arguments, but 1 was provided
+   11 |   explicit SectionTitle(ThemeManager &themeManager, juce::String text);
+      |            ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/grzzi/Desktop/Kompresor/src/host/GuzvarizerProcessor.cpp:8:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.h:7:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/MainPanel.h:5:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.h:52:18: error: field type 'LfoRateControl' is an abstract class
+   52 |   LfoRateControl lfoRateControl_;
+      |                  ^
+/Users/grzzi/Desktop/Kompresor/src/ui/theme/ThemeManager.h:14:18: note: unimplemented pure virtual method 'themeChanged' in 'LfoRateControl'
+   14 |     virtual void themeChanged() = 0;
+      |                  ^
+In file included from /Users/grzzi/Desktop/Kompresor/src/host/GuzvarizerProcessor.cpp:8:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.h:7:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/MainPanel.h:5:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/FooterBar.h:49:26: error: no matching constructor for initialization of 'SectionTitle'
+   49 |   SectionTitle vibeLabel_{"VIBE MODE"};
+      |                          ^~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:9:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'const char[10]' to 'const SectionTitle' for 1st argument
+    9 | class SectionTitle : public juce::Component, private ThemeManager::Listener {
+      |       ^~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:11:12: note: candidate constructor not viable: requires 2 arguments, but 1 was provided
+   11 |   explicit SectionTitle(ThemeManager &themeManager, juce::String text);
+      |            ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/grzzi/Desktop/Kompresor/src/host/GuzvarizerProcessor.cpp:8:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.h:7:
+In file included from /Users/grzzi/Desktop/Kompresor/src/ui/components/shell/MainPanel.h:6:
+/Users/grzzi/Desktop/Kompresor/src/ui/components/shell/HeaderBar.h:34:22: error: no matching constructor for initialization of 'SectionTitle'
+   34 |   SectionTitle title_{juce::String::fromUTF8("GUŽVARIZER")};
+      |                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:9:7: note: candidate constructor (the implicit copy constructor) not viable: no known conversion from 'String' to 'const SectionTitle' for 1st argument
+    9 | class SectionTitle : public juce::Component, private ThemeManager::Listener {
+      |       ^~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/components/text/SectionTitle.h:11:12: note: candidate constructor not viable: requires 2 arguments, but 1 was provided
+   11 |   explicit SectionTitle(ThemeManager &themeManager, juce::String text);
+      |            ^            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:13:3: error: cannot initialize object parameter of type 'juce::AudioProcessorEditor' with an expression of type 'neon::ui::PluginEditor'
+   13 |   setResizable(true, true);
+      |   ^~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:14:3: error: cannot initialize object parameter of type 'juce::AudioProcessorEditor' with an expression of type 'neon::ui::PluginEditor'
+   14 |   setResizeLimits(metrics::kMinEditorWidth, metrics::kMinEditorHeight, 1920,
+      |   ^~~~~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:16:3: error: cannot initialize object parameter of type 'juce::Component' with an expression of type 'neon::ui::PluginEditor'
+   16 |   setSize(metrics::kDefaultEditorWidth, metrics::kDefaultEditorHeight);
+      |   ^~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:21:68: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   21 |   processor_.parameters().addParameterListener(params::kAccentHue, this);
+      |                                                                    ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:366:65: note: passing argument to parameter 'listener' here
+  366 |     void addParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                 ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:22:73: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   22 |   processor_.parameters().addParameterListener(params::kNeonSaturation, this);
+      |                                                                         ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:366:65: note: passing argument to parameter 'listener' here
+  366 |     void addParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                 ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:23:72: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   23 |   processor_.parameters().addParameterListener(params::kGlowIntensity, this);
+      |                                                                        ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:366:65: note: passing argument to parameter 'listener' here
+  366 |     void addParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                 ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:24:74: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   24 |   processor_.parameters().addParameterListener(params::kPanelBrightness, this);
+      |                                                                          ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:366:65: note: passing argument to parameter 'listener' here
+  366 |     void addParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                 ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:25:74: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   25 |   processor_.parameters().addParameterListener(params::kGuzvanjeEnabled, this);
+      |                                                                          ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:366:65: note: passing argument to parameter 'listener' here
+  366 |     void addParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                 ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:26:73: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   26 |   processor_.parameters().addParameterListener(params::kLfoSyncEnabled, this);
+      |                                                                         ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:366:65: note: passing argument to parameter 'listener' here
+  366 |     void addParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                 ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:30:3: error: cannot initialize object parameter of type 'juce::Timer' with an expression of type 'neon::ui::PluginEditor'
+   30 |   startTimerHz(30);
+      |   ^~~~~~~~~~~~
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:34:71: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   34 |   processor_.parameters().removeParameterListener(params::kAccentHue, this);
+      |                                                                       ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:369:68: note: passing argument to parameter 'listener' here
+  369 |     void removeParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                    ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:36:51: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   36 |                                                   this);
+      |                                                   ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:369:68: note: passing argument to parameter 'listener' here
+  369 |     void removeParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                    ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:37:75: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   37 |   processor_.parameters().removeParameterListener(params::kGlowIntensity, this);
+      |                                                                           ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:369:68: note: passing argument to parameter 'listener' here
+  369 |     void removeParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                    ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:39:51: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   39 |                                                   this);
+      |                                                   ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:369:68: note: passing argument to parameter 'listener' here
+  369 |     void removeParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                    ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:41:51: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   41 |                                                   this);
+      |                                                   ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:369:68: note: passing argument to parameter 'listener' here
+  369 |     void removeParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                    ^
+/Users/grzzi/Desktop/Kompresor/src/ui/app/PluginEditor.cpp:43:51: error: cannot initialize a parameter of type 'Listener *' with an rvalue of type 'neon::ui::PluginEditor *'
+   43 |                                                   this);
+      |                                                   ^~~~
+/Users/grzzi/Desktop/Kompresor/build/_deps/juce-src/modules/juce_audio_processors/utilities/juce_AudioProcessorValueTreeState.h:369:68: note: passing argument to parameter 'listener' here
+  369 |     void removeParameterListener (StringRef parameterID, Listener* listener);
+      |                                                                    ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+/Users/grzzi/Desktop/Kompresor/src/host/GuzvarizerProcessor.cpp:255:10: error: cannot initialize return object of type 'juce::AudioProcessorEditor *' with an rvalue of type 'neon::ui::PluginEditor *'
+  255 |   return new neon::ui::PluginEditor(*this);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make[3]: *** [CMakeFiles/Guzvarizer.dir/src/ui/app/PluginEditor.cpp.o] Error 1
+make[3]: *** Waiting for unfinished jobs....
+1 error generated.
+11 errors generated.
+make[3]: *** [CMakeFiles/Guzvarizer.dir/src/ui/components/shell/HeaderBar.cpp.o] Error 1
+make[3]: *** [CMakeFiles/Guzvarizer.dir/src/ui/components/shell/FooterBar.cpp.o] Error 1
+4 errors generated.
+make[3]: *** [CMakeFiles/Guzvarizer.dir/src/host/GuzvarizerProcessor.cpp.o] Error 1
+make[2]: *** [CMakeFiles/Guzvarizer.dir/all] Error 2
+make[1]: *** [CMakeFiles/Guzvarizer_VST3.dir/rule] Error 2
+make: *** [Guzvarizer_VST3] Error 2

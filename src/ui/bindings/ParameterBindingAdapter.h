@@ -6,28 +6,39 @@
 #include <vector>
 
 #include "src/ui/components/controls/BypassToggle.h"
+#include "src/ui/components/controls/GuzvanjeToggle.h"
+#include "src/ui/components/controls/LfoRateControl.h"
 #include "src/ui/components/controls/NeonKnob.h"
 #include "src/ui/components/controls/VibeModeSegmentedControl.h"
 
 namespace neon::ui {
 
 class ParameterBindingAdapter {
- public:
+public:
   using SliderAttachment = juce::AudioProcessorValueTreeState::SliderAttachment;
   using ButtonAttachment = juce::AudioProcessorValueTreeState::ButtonAttachment;
-  using ComboBoxAttachment = juce::AudioProcessorValueTreeState::ComboBoxAttachment;
+  using ComboBoxAttachment =
+      juce::AudioProcessorValueTreeState::ComboBoxAttachment;
 
-  explicit ParameterBindingAdapter(juce::AudioProcessorValueTreeState& parameters);
+  explicit ParameterBindingAdapter(
+      juce::AudioProcessorValueTreeState &parameters);
 
-  void bindKnob(NeonKnob& knob);
-  void bindBypass(BypassToggle& bypass, const juce::String& parameterId);
-  void bindVibeMode(VibeModeSegmentedControl& control, const juce::String& parameterId);
+  void bindKnob(NeonKnob &knob);
+  void bindBypass(BypassToggle &bypass, const juce::String &parameterId);
+  void bindVibeMode(VibeModeSegmentedControl &control,
+                    const juce::String &parameterId);
+  void bindGuzvanje(neon::ui::GuzvanjeToggle &toggle,
+                    const juce::String &parameterId);
+  void bindLfoSyncEnabled(juce::ToggleButton &toggle,
+                          const juce::String &parameterId);
+  void bindLfoSyncDivision(juce::ComboBox &combo,
+                           const juce::String &parameterId);
 
- private:
-  juce::AudioProcessorValueTreeState& parameters_;
+private:
+  juce::AudioProcessorValueTreeState &parameters_;
   std::vector<std::unique_ptr<SliderAttachment>> sliderAttachments_;
   std::vector<std::unique_ptr<ButtonAttachment>> buttonAttachments_;
   std::vector<std::unique_ptr<ComboBoxAttachment>> comboAttachments_;
 };
 
-}  // namespace neon::ui
+} // namespace neon::ui

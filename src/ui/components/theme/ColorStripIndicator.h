@@ -1,19 +1,24 @@
 #pragma once
 
-#include <JuceHeader.h>
+#include "src/ui/theme/ThemeManager.h"
 
 namespace neon::ui {
 
-class ColorStripIndicator : public juce::Component {
- public:
-  ColorStripIndicator() = default;
+class ColorStripIndicator : public juce::Component,
+                            private ThemeManager::Listener {
+public:
+  explicit ColorStripIndicator(ThemeManager &themeManager);
+  ~ColorStripIndicator() override;
 
   void setReactiveLevel(float normalized) noexcept;
 
-  void paint(juce::Graphics& g) override;
+  void paint(juce::Graphics &g) override;
 
- private:
+private:
+  void themeChanged() override;
+
+  ThemeManager &themeManager_;
   float reactiveLevel_ = 0.35f;
 };
 
-}  // namespace neon::ui
+} // namespace neon::ui

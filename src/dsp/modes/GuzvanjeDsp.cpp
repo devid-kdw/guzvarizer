@@ -29,7 +29,10 @@ void GuzvanjeDsp::setEnabled(bool enabled) noexcept {
 void GuzvanjeDsp::setLfoRate(float rateHz) noexcept {
   currentLfoRate_ = rateHz;
   if (!lfoSyncEnabled_) {
-    lfo_.setFrequency(rateHz);
+    if (std::abs(rateHz - currentEffectiveFreq_) > 0.001f) {
+      currentEffectiveFreq_ = rateHz;
+      lfo_.setFrequency(rateHz);
+    }
   }
 }
 
@@ -37,16 +40,20 @@ void GuzvanjeDsp::setLfoSync(bool syncEnabled, int division,
                              float hostBpm) noexcept {
   lfoSyncEnabled_ = syncEnabled;
 
+  float targetFreq = currentLfoRate_;
+
   if (syncEnabled && hostBpm > 0.0f) {
     // Compute sync frequency from BPM and division
-    const auto div = static_cast<neon::LfoSyncDivision>(
-        division < 8 ? division : 4); // clamp to valid range, default 1/16
+    const int clampedDiv = std::max(0, std::min(division, 7)); // secure clamp
+    const auto div = static_cast<neon::LfoSyncDivision>(clampedDiv);
     const float bpc = neon::beatsPerCycle(div);
-    const float freqHz = (hostBpm / 60.0f) / bpc;
-    lfo_.setFrequency(freqHz);
-  } else {
-    // Hz mode or no valid BPM — use manual rate
-    lfo_.setFrequency(currentLfoRate_);
+    targetFreq = (hostBpm / 60.0f) / bpc;
+  }
+
+  // Epsilon compare to avoid redundant LFO resets/set frequency calls
+  if (std::abs(targetFreq - currentEffectiveFreq_) > 0.001f) {
+    currentEffectiveFreq_ = targetFreq;
+    lfo_.setFrequency(targetFreq);
   }
 }
 

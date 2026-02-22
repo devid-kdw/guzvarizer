@@ -1,0 +1,56 @@
+{
+  "phase": "GD-1",
+  "group": "shell",
+  "exports_dir": "assets/ui/exports/shell",
+  "notes": [
+    "All assets are PNG RGBA exports.",
+    "Each runtime shell asset includes @1x and @2x size variants.",
+    "Logo plate text is Gužvarizer (with ž)."
+  ],
+  "assets": {
+    "background": [
+      "gz_shell_background_atmosphere_base_1180x760.png",
+      "gz_shell_background_atmosphere_base_2360x1520.png"
+    ],
+    "outer_9slice": [
+      "gz_shell_outer_corner_tl_base_96x96.png",
+      "gz_shell_outer_corner_tl_base_192x192.png",
+      "gz_shell_outer_corner_tr_base_96x96.png",
+      "gz_shell_outer_corner_tr_base_192x192.png",
+      "gz_shell_outer_corner_bl_base_96x96.png",
+      "gz_shell_outer_corner_bl_base_192x192.png",
+      "gz_shell_outer_corner_br_base_96x96.png",
+      "gz_shell_outer_corner_br_base_192x192.png",
+      "gz_shell_outer_edge_top_base_988x96.png",
+      "gz_shell_outer_edge_top_base_1976x192.png",
+      "gz_shell_outer_edge_bottom_base_988x96.png",
+      "gz_shell_outer_edge_bottom_base_1976x192.png",
+      "gz_shell_outer_edge_left_base_96x568.png",
+      "gz_shell_outer_edge_left_base_192x1136.png",
+      "gz_shell_outer_edge_right_base_96x568.png",
+      "gz_shell_outer_edge_right_base_192x1136.png",
+      "gz_shell_outer_fill_center_base_988x568.png",
+      "gz_shell_outer_fill_center_base_1976x1136.png"
+    ],
+    "section_frames": [
+      "gz_shell_header_frame_base_1148x78.png",
+      "gz_shell_header_frame_base_2296x156.png",
+      "gz_shell_main_section_frame_base_1148x264.png",
+      "gz_shell_main_section_frame_base_2296x528.png",
+      "gz_shell_tone_shaper_section_frame_base_1148x220.png",
+      "gz_shell_tone_shaper_section_frame_base_2296x440.png",
+      "gz_shell_footer_frame_base_1148x88.png",
+      "gz_shell_footer_frame_base_2296x176.png"
+    ],
+    "side_deco": [
+      "gz_shell_side_deco_left_glow_64x520.png",
+      "gz_shell_side_deco_left_glow_128x1040.png",
+      "gz_shell_side_deco_right_glow_64x520.png",
+      "gz_shell_side_deco_right_glow_128x1040.png"
+    ],
+    "logo_plate": [
+      "gz_shell_logo_plate_base_720x96.png",
+      "gz_shell_logo_plate_base_1440x192.png"
+    ]
+  }
+}

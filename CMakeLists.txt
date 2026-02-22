@@ -39,6 +39,16 @@ juce_add_plugin(Guzvarizer
 
 juce_generate_juce_header(Guzvarizer)
 
+file(GLOB_RECURSE GUZVARIZER_UI_ASSETS CONFIGURE_DEPENDS
+  "${CMAKE_CURRENT_SOURCE_DIR}/assets/ui/*.png"
+  "${CMAKE_CURRENT_SOURCE_DIR}/assets/images/*.png"
+)
+
+juce_add_binary_data(GuzvarizerAssets
+  SOURCES
+    ${GUZVARIZER_UI_ASSETS}
+)
+
 target_sources(Guzvarizer PRIVATE
   src/dsp/compressor/CompressorCore.cpp
   src/dsp/modes/GuzvanjeDsp.cpp
@@ -47,9 +57,12 @@ target_sources(Guzvarizer PRIVATE
   src/host/GuzvarizerProcessor.cpp
   src/host/parameters/ParameterLayout.cpp
   src/ui/app/PluginEditor.cpp
+  src/ui/assets/UiAssetRepository.cpp
   src/ui/bindings/NullMeterBridgeClient.cpp
   src/ui/bindings/ParameterBindingAdapter.cpp
   src/ui/components/controls/BypassToggle.cpp
+  src/ui/components/controls/GuzvanjeToggle.cpp
+  src/ui/components/controls/LfoRateControl.cpp
   src/ui/components/controls/NeonKnob.cpp
   src/ui/components/controls/VibeModeSegmentedControl.cpp
   src/ui/components/metering/GainReductionMeter.cpp
@@ -76,4 +89,5 @@ target_compile_definitions(Guzvarizer PUBLIC
 target_link_libraries(Guzvarizer PRIVATE
   juce::juce_audio_utils
   juce::juce_dsp
+  GuzvarizerAssets
 )

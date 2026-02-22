@@ -21,14 +21,17 @@ class NeonKnob : public juce::Component, private juce::Slider::Listener {
     double defaultValue = 0.5;
     Mapping mapping = Mapping::kLinear;
     juce::Colour ringColour = juce::Colour::fromRGB(0, 255, 210);
-    bool showValueReadout = true;
+    bool showValueReadout = false;
+    juce::String assetId;
+    bool showLabel = true;
   };
 
   explicit NeonKnob(Config config);
   ~NeonKnob() override;
 
   void setOnValueChanged(std::function<void(double)> callback);
-  void setValue(double value, juce::NotificationType notification = juce::sendNotificationSync);
+  void setValue(double value,
+                juce::NotificationType notification = juce::sendNotificationSync);
   double value() const noexcept;
   double minValue() const noexcept;
   double maxValue() const noexcept;
@@ -42,14 +45,21 @@ class NeonKnob : public juce::Component, private juce::Slider::Listener {
 
  private:
   void sliderValueChanged(juce::Slider* slider) override;
-
   void updateValueLabel();
+  void loadAssets();
 
   Config config_;
   juce::Slider knob_;
   juce::Label label_;
   juce::Label valueLabel_;
   std::function<void(double)> onValueChanged_;
+
+  juce::Image ringBase_;
+  juce::Image ringActive_;
+  juce::Image ticks_;
+  juce::Image cap_;
+  juce::Image pointer_;
+  juce::Image glow_;
 };
 
 }  // namespace neon::ui

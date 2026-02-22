@@ -17,30 +17,39 @@ Procitati prije Phase FE-0:
 5. `docs/40_PARAMETER_SPEC.md`
 6. `docs/60_UI_COMPONENT_BLUEPRINT.md`
 7. `docs/70_IMPLEMENTATION_STRATEGY.md`
-8. `docs/90_MASTER_IMPLEMENTATION_PLAN.md`
-9. `docs/95_PHASE_REPORT_TEMPLATE.md`
-10. `assets/images/guzvarizer-ui-reference.png`
+8. `docs/80_RELEASE_TARGETS.md`
+9. `docs/90_MASTER_IMPLEMENTATION_PLAN.md`
+10. `docs/95_PHASE_REPORT_TEMPLATE.md`
+11. `docs/96_AGENT_EXECUTION_RULES.md`
+12. `docs/reports/BF2-1_report.md`
+13. `docs/reports/BF2-2_report.md`
+14. `docs/reports/BF2-3_report.md`
+15. `docs/reports/BF2-4_5_report.md`
+16. `assets/images/guzvarizer-ui-reference.png`
 
-## FE-0 Environment Bootstrap
+## FE-0 Backend Handoff Validation
 
 Tasks:
 
-- provjeri dostupnost alata (`cmake`, compiler, optional `ninja`)
-- instaliraj nedostajuce dependency-je potrebne za FE rad
-- potvrdi da mozes konfigurirati project build tree
+- potvrdi da backend trenutno builda (`cmake -S . -B build -Wno-dev` + `cmake --build build --target Guzvarizer_VST3 -j4`)
+- auditiraj backend->UI handoff tocke:
+  - `GuzvarizerProcessor::meterSource()`
+  - `PluginEditor` timer polling (`AtomicMeterBridgeClient`)
+  - APVTS dostupnost za sve parametre iz speca
+- dokumentiraj FE pretpostavke i otvorena pitanja prije UI implementacije
 
 Exit criteria:
 
-- documented toolchain status
-- documented install actions
+- backend handoff potvrden
+- FE implementacija moze krenuti bez blokera
 
 ## FE-1 UI Foundation + Attachments
 
 Tasks:
 
 - auditiraj `src/ui` komponente i attachment wiring
-- osiguraj APVTS attachment integraciju za sve postojece kontrole
-- ukloni preostale thread-unsafe UI write putanje
+- osiguraj APVTS attachment integraciju za sve postojece i nove kontrole
+- ukloni preostale direct param write putanje koje ne koriste attachment pattern
 
 Exit criteria:
 
@@ -64,25 +73,32 @@ Exit criteria:
 
 Tasks:
 
-- implementiraj `Gužvanje` toggle komponentu
-- implementiraj `LfoRateControl` (Hz/sync + division)
-- enforce disable state kad je `guzvanje_enabled = 0`
+- implementiraj `Gužvanje` toggle komponentu i bind na `guzvanje_enabled`
+- implementiraj `LfoRateControl` (rate + sync mode + division) i bind na:
+  - `lfo_rate_hz`
+  - `lfo_sync_enabled`
+  - `lfo_sync_division`
+- enforce disable state:
+  - cijeli LFO control disabled kad je `guzvanje_enabled = 0`
+  - division UI aktivan samo kad je `lfo_sync_enabled = 1`
 
 Exit criteria:
 
-- LFO controls tocno prate `lfo_sync_enabled` i `guzvanje_enabled`
+- Gužvanje i LFO kontrole potpuno bindane
+- disable/enable logika tocno prati parametre
 
 ## FE-4 Metering + Reactive Visuals
 
 Tasks:
 
-- spoji UI meter komponente na `MeterBridgeClient`
-- stabiliziraj smoothing/clamp/fps update
-- spoji reactive color strip na meter input
+- spoji `GainReductionMeter` i `LevelVisualizer` na backend meter snapshot (bez direct audio buffer pristupa)
+- spoji `ColorStripIndicator` na `rms_normalized` (ili dogovoreni reactive signal)
+- stabiliziraj smoothing/clamp/fps update bez prekomjernog CPU troska
 
 Exit criteria:
 
-- meter i vizuali rade bez direct audio buffer pristupa
+- meter i reactive strip rade stabilno
+- nema UI thread blokiranja ni DSP thread pristupa
 
 ## FE-5 Theme + Final Polish
 

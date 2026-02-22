@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "phase": "GD-5",
+    "status": "final_locked",
+    "method": "Derived from current 1180x760 UI layout metrics and component bounds."
+  },
+  "canvas": {
+    "w": 1180,
+    "h": 760
+  },
+  "knobs": {
+    "threshold": {
+      "cx": 123,
+      "cy": 254,
+      "diameter": 96
+    },
+    "attack": {
+      "cx": 314,
+      "cy": 254,
+      "diameter": 96
+    },
+    "release": {
+      "cx": 505,
+      "cy": 254,
+      "diameter": 96
+    },
+    "ratio": {
+      "cx": 696,
+      "cy": 254,
+      "diameter": 96
+    },
+    "output": {
+      "cx": 887,
+      "cy": 254,
+      "diameter": 96
+    },
+    "saturation": {
+      "cx": 140,
+      "cy": 546,
+      "diameter": 86
+    },
+    "harmonics": {
+      "cx": 365,
+      "cy": 546,
+      "diameter": 86
+    },
+    "grit": {
+      "cx": 590,
+      "cy": 546,
+      "diameter": 86
+    },
+    "air": {
+      "cx": 815,
+      "cy": 546,
+      "diameter": 86
+    },
+    "color": {
+      "cx": 1040,
+      "cy": 546,
+      "diameter": 86
+    },
+    "lfo_rate": {
+      "cx": 633,
+      "cy": 712,
+      "diameter": 64
+    }
+  }
+}

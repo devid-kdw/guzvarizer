@@ -6,20 +6,26 @@
 
 #include "src/ui/components/controls/NeonKnob.h"
 #include "src/ui/components/text/SectionTitle.h"
+#include "src/ui/theme/ThemeManager.h"
 
 namespace neon::ui {
 
-class ToneShaperSection : public juce::Component {
- public:
-  ToneShaperSection();
+class ToneShaperSection : public juce::Component,
+                          private ThemeManager::Listener {
+public:
+  explicit ToneShaperSection(ThemeManager &themeManager);
+  ~ToneShaperSection() override;
 
-  std::array<NeonKnob*, 5> toneKnobs();
+  std::array<NeonKnob *, 5> toneKnobs();
 
-  void paint(juce::Graphics& g) override;
+  void paint(juce::Graphics &g) override;
   void resized() override;
 
- private:
-  SectionTitle title_{"TONE SHAPER"};
+private:
+  void themeChanged() override;
+
+  ThemeManager &themeManager_;
+  SectionTitle title_;
   NeonKnob saturationKnob_;
   NeonKnob harmonicsKnob_;
   NeonKnob gritKnob_;
@@ -27,4 +33,4 @@ class ToneShaperSection : public juce::Component {
   NeonKnob colorKnob_;
 };
 
-}  // namespace neon::ui
+} // namespace neon::ui

@@ -58,9 +58,10 @@ private:
   neon::dsp::ToneShaper toneShaper_;
   neon::dsp::GuzvanjeDsp guzvanje_;
 
-  // Per-sample bias buffers for Gužvanje LFO
-  std::vector<float> guzThresholdBiases_;
-  std::vector<float> guzRatioBiases_;
+  // Per-sample buffers for parameters
+  std::vector<float> sampleThresholds_;
+  std::vector<float> sampleRatios_;
+  std::vector<float> sampleOutputGains_;
 
   // Lock-free meter bridge (audio thread writes, UI thread reads)
   MeterBridgeSource meterSource_;

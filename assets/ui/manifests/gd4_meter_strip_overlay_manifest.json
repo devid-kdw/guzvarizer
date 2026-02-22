@@ -1,0 +1,50 @@
+{
+  "phase": "GD-4",
+  "groups": [
+    "meter",
+    "strip",
+    "overlay"
+  ],
+  "exports_dirs": {
+    "meters": "assets/ui/exports/meters",
+    "strips": "assets/ui/exports/strips",
+    "overlays": "assets/ui/exports/overlays"
+  },
+  "assets": {
+    "meters": [
+      "gz_meter_top_visualizer_panel_frame_base_220x96.png",
+      "gz_meter_top_visualizer_panel_frame_base_440x192.png",
+      "gz_meter_in_bar_segment_sprite_base_18x64.png",
+      "gz_meter_in_bar_segment_sprite_base_36x128.png",
+      "gz_meter_out_bar_segment_sprite_base_18x64.png",
+      "gz_meter_out_bar_segment_sprite_base_36x128.png",
+      "gz_meter_gr_panel_frame_base_220x200.png",
+      "gz_meter_gr_panel_frame_base_440x400.png",
+      "gz_meter_gr_segment_sprite_base_16x48.png",
+      "gz_meter_gr_segment_sprite_base_32x96.png",
+      "gz_meter_scale_overlay_texture_base_220x200.png",
+      "gz_meter_scale_overlay_texture_base_440x400.png"
+    ],
+    "strips": [
+      "gz_strip_color_strip_base_base_980x22.png",
+      "gz_strip_color_strip_base_base_1960x44.png",
+      "gz_strip_color_strip_segment_mask_base_980x22.png",
+      "gz_strip_color_strip_segment_mask_base_1960x44.png",
+      "gz_strip_color_strip_hotspot_glow_72x32.png",
+      "gz_strip_color_strip_hotspot_glow_144x64.png"
+    ],
+    "overlays": [
+      "gz_overlay_grain_full_base_1180x760.png",
+      "gz_overlay_grain_full_base_2360x1520.png",
+      "gz_overlay_scanline_full_base_1180x760.png",
+      "gz_overlay_scanline_full_base_2360x1520.png",
+      "gz_overlay_vignette_full_base_1180x760.png",
+      "gz_overlay_vignette_full_base_2360x1520.png"
+    ]
+  },
+  "total_exports": 24,
+  "notes": [
+    "All runtime assets are PNG RGBA with @1x and @2x variants.",
+    "Overlays are intended as top-layer passes (grain/scanline/vignette)."
+  ]
+}

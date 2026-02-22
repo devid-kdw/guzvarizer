@@ -2,28 +2,39 @@
 
 namespace neon::ui {
 
-SectionTitle::SectionTitle(juce::String text) : text_(std::move(text)) {}
+SectionTitle::SectionTitle(ThemeManager &themeManager, juce::String text)
+    : themeManager_(themeManager), text_(std::move(text)) {
+  themeManager_.addListener(this);
+}
 
-void SectionTitle::setText(const juce::String& text) {
+SectionTitle::~SectionTitle() { themeManager_.removeListener(this); }
+
+void SectionTitle::setText(const juce::String &text) {
   text_ = text;
   repaint();
 }
 
-void SectionTitle::setGlowColour(juce::Colour colour) {
-  glowColour_ = colour;
+void SectionTitle::setJustification(juce::Justification justification) {
+  justification_ = justification;
   repaint();
 }
 
-void SectionTitle::paint(juce::Graphics& g) {
-  const auto area = getLocalBounds();
+void SectionTitle::paint(juce::Graphics &g) {
+  const auto area = getLocalBounds().toFloat();
   const auto text = text_.toUpperCase();
 
-  g.setFont(juce::Font(18.0f, juce::Font::bold));
-  g.setColour(glowColour_);
-  g.drawText(text, area.translated(0, 1), juce::Justification::centredLeft, true);
+  // Use a standard semi-bold sans-serif font
+  g.setFont(juce::FontOptions(17.0f).withStyle("Semi-Bold"));
 
-  g.setColour(juce::Colours::white.withAlpha(0.92f));
-  g.drawText(text, area, juce::Justification::centredLeft, true);
+  // Saturated glow layer derived from theme
+  g.setColour(themeManager_.accent().withAlpha(0.35f));
+  g.drawText(text, area.translated(0.0f, 1.0f), justification_, true);
+
+  // Sharp core text
+  g.setColour(themeManager_.textPrimary());
+  g.drawText(text, area, justification_, true);
 }
 
-}  // namespace neon::ui
+void SectionTitle::themeChanged() { repaint(); }
+
+} // namespace neon::ui

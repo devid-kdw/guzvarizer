@@ -1,29 +1,42 @@
 #include "src/ui/components/theme/ColorStripIndicator.h"
 
+#include "src/ui/assets/UiAssetRepository.h"
+
 namespace neon::ui {
 
+ColorStripIndicator::ColorStripIndicator(ThemeManager &themeManager)
+    : themeManager_(themeManager) {
+  themeManager_.addListener(this);
+}
+
+ColorStripIndicator::~ColorStripIndicator() { themeManager_.removeListener(this); }
+
 void ColorStripIndicator::setReactiveLevel(float normalized) noexcept {
-  reactiveLevel_ = juce::jlimit(0.0f, 1.0f, normalized);
-  repaint();
+  const float target = juce::jlimit(0.0f, 1.0f, normalized);
+  if (std::abs(target - reactiveLevel_) > 0.005f) {
+    reactiveLevel_ = target;
+    repaint();
+  }
 }
 
-void ColorStripIndicator::paint(juce::Graphics& g) {
-  auto area = getLocalBounds().toFloat().reduced(2.0f);
+void ColorStripIndicator::paint(juce::Graphics &g) {
+  auto area = getLocalBounds().toFloat();
 
-  juce::ColourGradient gradient(juce::Colour::fromRGB(255, 24, 138), area.getTopLeft(),
-                                juce::Colour::fromRGB(0, 240, 255), area.getTopRight(), false);
-  gradient.addColour(0.55, juce::Colour::fromRGB(255, 170, 42));
+  const auto base = assets::image("gz_strip_color_strip_base_base_980x22_png");
+  const auto mask =
+      assets::image("gz_strip_color_strip_segment_mask_base_980x22_png");
+  const auto hotspot =
+      assets::image("gz_strip_color_strip_hotspot_glow_72x32_png");
 
-  g.setGradientFill(gradient);
-  g.fillRoundedRectangle(area, 5.0f);
+  assets::drawIfValid(g, base, area);
+  assets::drawIfValid(g, mask, area, 0.92f);
 
-  const auto cursorX = juce::jmap(reactiveLevel_, 0.0f, 1.0f, area.getX(), area.getRight());
-  auto cursor = juce::Rectangle<float>(cursorX - 10.0f, area.getY(), 20.0f, area.getHeight());
-  g.setColour(juce::Colours::white.withAlpha(0.32f));
-  g.fillRoundedRectangle(cursor, 4.0f);
-
-  g.setColour(juce::Colours::white.withAlpha(0.34f));
-  g.drawRoundedRectangle(area, 5.0f, 1.0f);
+  const auto x = juce::jmap(reactiveLevel_, 0.0f, 1.0f, area.getX(), area.getRight());
+  const auto hotspotBounds = juce::Rectangle<float>(x - 22.0f, area.getCentreY() - 10.0f,
+                                                    44.0f, 20.0f);
+  assets::drawIfValid(g, hotspot, hotspotBounds, 0.95f);
 }
 
-}  // namespace neon::ui
+void ColorStripIndicator::themeChanged() { repaint(); }
+
+} // namespace neon::ui

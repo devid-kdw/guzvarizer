@@ -31,8 +31,13 @@ private:
   float hsfStateL_ = 0.0f;
   float hsfStateR_ = 0.0f;
 
+  // DC Blocker state (1st-order moving average) — per channel
+  float dcStateL_ = 0.0f;
+  float dcStateR_ = 0.0f;
+
   // Cached filter coefficients
   float hsfAlpha_ = 0.0f;
+  float dcAlpha_ = 0.0f;
 
   void updateFilterCoefficients() noexcept;
 

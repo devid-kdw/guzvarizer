@@ -44,8 +44,8 @@ void CompressorCore::updateCoefficients() noexcept {
 }
 
 float CompressorCore::processBlock(float *left, float *right, int numSamples,
-                                   const float *thresholdBiases,
-                                   const float *ratioBiases) noexcept {
+                                   const float *thresholds, const float *ratios,
+                                   const float *makeupGainsLinear) noexcept {
   const float baseThreshold = params_.thresholdDb;
   const float baseRatio = std::max(params_.ratio, 1.0f);
   const float makeupGain = dbToGain(params_.outputDb);
@@ -56,10 +56,8 @@ float CompressorCore::processBlock(float *left, float *right, int numSamples,
 
   for (int i = 0; i < numSamples; ++i) {
     // Determine effective per-sample parameters
-    const float currentThreshold =
-        baseThreshold + (thresholdBiases ? thresholdBiases[i] : 0.0f);
-    const float currentRatio =
-        std::max(1.0f, baseRatio + (ratioBiases ? ratioBiases[i] : 0.0f));
+    const float currentThreshold = thresholds ? thresholds[i] : baseThreshold;
+    const float currentRatio = std::max(1.0f, ratios ? ratios[i] : baseRatio);
 
     // --- Detect peak level (absolute max of L/R) ---
     float peakSample = std::abs(left[i]);
@@ -95,7 +93,9 @@ float CompressorCore::processBlock(float *left, float *right, int numSamples,
     }
 
     // grDb is how much to reduce (positive value = reduction)
-    const float gainLinear = dbToGain(-grDb) * makeupGain;
+    const float currentMakeupGain =
+        makeupGainsLinear ? makeupGainsLinear[i] : makeupGain;
+    const float gainLinear = dbToGain(-grDb) * currentMakeupGain;
 
     // --- Apply gain ---
     left[i] *= gainLinear;

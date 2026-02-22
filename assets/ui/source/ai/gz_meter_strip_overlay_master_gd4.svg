@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1320" height="760" viewBox="0 0 1320 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <rect width="1320" height="760" rx="20" fill="#071129"/>
+  <rect x="12" y="12" width="1296" height="736" rx="16" stroke="#3C679E" stroke-opacity="0.8" stroke-width="2"/>
+  <text x="36" y="62" fill="#DDEBFF" font-size="34" font-family="Arial, sans-serif">GD-4 Meter / Strip / Overlay Master</text>
+
+  <g transform="translate(36 110)">
+    <rect width="220" height="96" rx="14" fill="#0B1327" stroke="#45689A" stroke-width="2"/>
+    <rect x="6" y="6" width="208" height="84" rx="10" stroke="#49E4FF" stroke-opacity="0.7" stroke-width="2"/>
+    <text x="14" y="24" fill="#D3E5FF" font-size="28" font-family="Arial, sans-serif">LEVEL</text>
+    <rect x="22" y="32" width="16" height="54" rx="3" fill="#42E4FF"/>
+    <rect x="44" y="28" width="16" height="58" rx="3" fill="#6BD9FF"/>
+    <rect x="66" y="36" width="16" height="50" rx="3" fill="#8FD0FF"/>
+    <rect x="88" y="34" width="16" height="52" rx="3" fill="#B6B25F"/>
+    <rect x="110" y="30" width="16" height="56" rx="3" fill="#D49A57"/>
+    <rect x="132" y="28" width="16" height="58" rx="3" fill="#E58D53"/>
+    <rect x="154" y="24" width="16" height="62" rx="3" fill="#F08052"/>
+    <rect x="176" y="20" width="16" height="66" rx="3" fill="#F37B52"/>
+  </g>
+
+  <g transform="translate(292 110)">
+    <rect width="220" height="200" rx="16" fill="#0B1224" stroke="#476A9B" stroke-width="2"/>
+    <rect x="8" y="8" width="204" height="184" rx="12" stroke="#FF61B4" stroke-opacity="0.7" stroke-width="2"/>
+    <text x="14" y="26" fill="#F1DAED" font-size="28" font-family="Arial, sans-serif">GAIN REDUCTION</text>
+    <line x1="26" y1="56" x2="26" y2="170" stroke="#A9C1E5" stroke-opacity="0.5"/>
+    <line x1="68" y1="56" x2="68" y2="170" stroke="#A9C1E5" stroke-opacity="0.5"/>
+    <line x1="110" y1="56" x2="110" y2="170" stroke="#A9C1E5" stroke-opacity="0.5"/>
+    <line x1="152" y1="56" x2="152" y2="170" stroke="#A9C1E5" stroke-opacity="0.5"/>
+    <line x1="194" y1="56" x2="194" y2="170" stroke="#A9C1E5" stroke-opacity="0.5"/>
+    <text x="20" y="184" fill="#BCD3EF" font-size="22" font-family="Arial, sans-serif">0</text>
+    <text x="56" y="184" fill="#BCD3EF" font-size="22" font-family="Arial, sans-serif">-10</text>
+    <text x="98" y="184" fill="#BCD3EF" font-size="22" font-family="Arial, sans-serif">-20</text>
+    <text x="140" y="184" fill="#BCD3EF" font-size="22" font-family="Arial, sans-serif">-30</text>
+    <text x="184" y="184" fill="#BCD3EF" font-size="22" font-family="Arial, sans-serif">dB</text>
+  </g>
+
+  <g transform="translate(36 356)">
+    <rect width="980" height="22" rx="10" fill="#0A1020" stroke="#4B6E9F" stroke-width="2"/>
+    <rect x="8" y="6" width="964" height="10" rx="4" fill="#18223A" stroke="#52729E" stroke-opacity="0.7"/>
+    <rect x="64" y="2" width="56" height="18" rx="9" fill="#FFD47A" filter="url(#softGlow)"/>
+    <rect x="304" y="2" width="56" height="18" rx="9" fill="#FFD47A" filter="url(#softGlow)"/>
+    <rect x="544" y="2" width="56" height="18" rx="9" fill="#FFD47A" filter="url(#softGlow)"/>
+    <rect x="784" y="2" width="56" height="18" rx="9" fill="#FFD47A" filter="url(#softGlow)"/>
+  </g>
+
+  <g transform="translate(842 110)">
+    <rect width="420" height="220" rx="12" fill="#0D1730" stroke="#4E6F9F" stroke-width="2"/>
+    <rect x="14" y="14" width="392" height="54" rx="6" fill="#FFFFFF" fill-opacity="0.06"/>
+    <rect x="14" y="82" width="392" height="54" rx="6" fill="#A8C6F2" fill-opacity="0.08"/>
+    <rect x="14" y="150" width="392" height="54" rx="6" fill="#000000" fill-opacity="0.22"/>
+    <text x="24" y="44" fill="#D4E6FF" font-size="24" font-family="Arial, sans-serif">grain overlay</text>
+    <text x="24" y="112" fill="#D4E6FF" font-size="24" font-family="Arial, sans-serif">scanline overlay</text>
+    <text x="24" y="180" fill="#D4E6FF" font-size="24" font-family="Arial, sans-serif">vignette overlay</text>
+  </g>
+
+  <text x="36" y="464" fill="#AFC5E5" font-size="26" font-family="Menlo, monospace">Exported groups: meters / strips / overlays</text>
+  <text x="36" y="506" fill="#AFC5E5" font-size="26" font-family="Menlo, monospace">Naming: gz_meter_*, gz_strip_*, gz_overlay_* with @1x + @2x pairs</text>
+</svg>

@@ -25,8 +25,9 @@ public:
   /// Process audio in-place. Returns peak gain reduction (dB, negative) for
   /// metering. Optional bias arrays allow per-sample parameter modulation.
   float processBlock(float *left, float *right, int numSamples,
-                     const float *thresholdBiases = nullptr,
-                     const float *ratioBiases = nullptr) noexcept;
+                     const float *thresholds = nullptr,
+                     const float *ratios = nullptr,
+                     const float *makeupGainsLinear = nullptr) noexcept;
 
 private:
   CompressorParams params_{};

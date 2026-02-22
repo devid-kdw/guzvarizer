@@ -1,0 +1,16 @@
+{
+  "canvas": { "w": 1180, "h": 760 },
+  "knobs": {
+    "threshold": { "cx": 0, "cy": 0, "diameter": 0 },
+    "attack": { "cx": 0, "cy": 0, "diameter": 0 },
+    "release": { "cx": 0, "cy": 0, "diameter": 0 },
+    "ratio": { "cx": 0, "cy": 0, "diameter": 0 },
+    "output": { "cx": 0, "cy": 0, "diameter": 0 },
+    "saturation": { "cx": 0, "cy": 0, "diameter": 0 },
+    "harmonics": { "cx": 0, "cy": 0, "diameter": 0 },
+    "grit": { "cx": 0, "cy": 0, "diameter": 0 },
+    "air": { "cx": 0, "cy": 0, "diameter": 0 },
+    "color": { "cx": 0, "cy": 0, "diameter": 0 },
+    "lfo_rate": { "cx": 0, "cy": 0, "diameter": 0 }
+  }
+}

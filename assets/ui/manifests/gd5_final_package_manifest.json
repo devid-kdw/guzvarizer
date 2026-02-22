@@ -1,0 +1,51 @@
+{
+  "phase": "GD-5",
+  "status": "final_package",
+  "product_name": "Gu\u017evarizer",
+  "canvas": {
+    "w": 1180,
+    "h": 760
+  },
+  "layout_manifest": "assets/ui/manifests/layout_map_1180x760.json",
+  "exports_png_counts": {
+    "shell": 34,
+    "knobs_main": 60,
+    "knobs_tone": 60,
+    "knobs_lfo": 12,
+    "controls": 42,
+    "meters": 12,
+    "strips": 6,
+    "overlays": 6
+  },
+  "exports_png_total": 232,
+  "source_files": [
+    "assets/ui/source/ai/gz_controls_master_gd3.svg",
+    "assets/ui/source/ai/gz_knob_system_master_gd2.svg",
+    "assets/ui/source/ai/gz_meter_strip_overlay_master_gd4.svg",
+    "assets/ui/source/ai/gz_shell_frame_master_gd1.svg"
+  ],
+  "qa_previews": [
+    "assets/ui/qa/gz_qa_gd1_shell_preview_1180x760.png",
+    "assets/ui/qa/gz_qa_gd1_shell_preview_2360x1520.png",
+    "assets/ui/qa/gz_qa_gd2_knobs_lfo_preview_264x302.png",
+    "assets/ui/qa/gz_qa_gd2_knobs_lfo_preview_528x604.png",
+    "assets/ui/qa/gz_qa_gd2_knobs_main_preview_1496x366.png",
+    "assets/ui/qa/gz_qa_gd2_knobs_main_preview_2992x732.png",
+    "assets/ui/qa/gz_qa_gd2_knobs_tone_preview_1336x334.png",
+    "assets/ui/qa/gz_qa_gd2_knobs_tone_preview_2672x668.png",
+    "assets/ui/qa/gz_qa_gd3_controls_preview_1180x360.png",
+    "assets/ui/qa/gz_qa_gd3_controls_preview_2360x720.png",
+    "assets/ui/qa/gz_qa_gd4_meter_strip_overlay_preview_1180x420.png",
+    "assets/ui/qa/gz_qa_gd4_meter_strip_overlay_preview_2360x840.png",
+    "assets/ui/qa/gz_qa_gd5_final_preview_1180x760.png",
+    "assets/ui/qa/gz_qa_gd5_final_preview_2360x1520.png"
+  ],
+  "naming_validation": {
+    "invalid_files": [],
+    "valid": true
+  },
+  "notes": [
+    "Tone Shaper labels finalized as AIR + COLOR (no duplicate AIR).",
+    "All generated runtime assets remain inside assets/ui."
+  ]
+}

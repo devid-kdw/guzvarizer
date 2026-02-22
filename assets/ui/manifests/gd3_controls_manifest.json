@@ -1,0 +1,67 @@
+{
+  "phase": "GD-3",
+  "group": "control",
+  "exports_dir": "assets/ui/exports/controls",
+  "notes": [
+    "All controls exported as PNG RGBA.",
+    "Runtime assets include @1x and @2x variants.",
+    "GU\u017dVANJE label appears in control artwork (filename remains ASCII guzvanje)."
+  ],
+  "assets": {
+    "bypass": [
+      "gz_control_bypass_button_off_320x96.png",
+      "gz_control_bypass_button_off_640x192.png",
+      "gz_control_bypass_button_on_320x96.png",
+      "gz_control_bypass_button_on_640x192.png",
+      "gz_control_bypass_button_hover_320x96.png",
+      "gz_control_bypass_button_hover_640x192.png",
+      "gz_control_bypass_button_pressed_320x96.png",
+      "gz_control_bypass_button_pressed_640x192.png",
+      "gz_control_bypass_button_disabled_320x96.png",
+      "gz_control_bypass_button_disabled_640x192.png"
+    ],
+    "vibe_shell": [
+      "gz_control_vibe_segmented_shell_base_640x120.png",
+      "gz_control_vibe_segmented_shell_base_1280x240.png"
+    ],
+    "vibe_items": [
+      "gz_control_vibe_smooth_off_180x88.png",
+      "gz_control_vibe_smooth_off_360x176.png",
+      "gz_control_vibe_smooth_on_180x88.png",
+      "gz_control_vibe_smooth_on_360x176.png",
+      "gz_control_vibe_punch_off_180x88.png",
+      "gz_control_vibe_punch_off_360x176.png",
+      "gz_control_vibe_punch_on_180x88.png",
+      "gz_control_vibe_punch_on_360x176.png",
+      "gz_control_vibe_dirty_off_180x88.png",
+      "gz_control_vibe_dirty_off_360x176.png",
+      "gz_control_vibe_dirty_on_180x88.png",
+      "gz_control_vibe_dirty_on_360x176.png"
+    ],
+    "guzvanje": [
+      "gz_control_guzvanje_toggle_off_260x94.png",
+      "gz_control_guzvanje_toggle_off_520x188.png",
+      "gz_control_guzvanje_toggle_on_260x94.png",
+      "gz_control_guzvanje_toggle_on_520x188.png",
+      "gz_control_guzvanje_toggle_hover_260x94.png",
+      "gz_control_guzvanje_toggle_hover_520x188.png",
+      "gz_control_guzvanje_toggle_pressed_260x94.png",
+      "gz_control_guzvanje_toggle_pressed_520x188.png"
+    ],
+    "sync": [
+      "gz_control_sync_checkbox_off_88x88.png",
+      "gz_control_sync_checkbox_off_176x176.png",
+      "gz_control_sync_checkbox_on_88x88.png",
+      "gz_control_sync_checkbox_on_176x176.png",
+      "gz_control_sync_checkbox_disabled_88x88.png",
+      "gz_control_sync_checkbox_disabled_176x176.png"
+    ],
+    "led": [
+      "gz_control_led_status_off_48x48.png",
+      "gz_control_led_status_off_96x96.png",
+      "gz_control_led_status_on_48x48.png",
+      "gz_control_led_status_on_96x96.png"
+    ]
+  },
+  "total_exports": 42
+}

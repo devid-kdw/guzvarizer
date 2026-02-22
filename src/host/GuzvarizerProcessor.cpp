@@ -55,8 +55,9 @@ void GuzvarizerProcessor::prepareToPlay(double sampleRate,
   toneShaper_.prepare(sampleRate, samplesPerBlock);
   guzvanje_.prepare(sampleRate);
 
-  guzThresholdBiases_.assign(samplesPerBlock, 0.0f);
-  guzRatioBiases_.assign(samplesPerBlock, 0.0f);
+  sampleThresholds_.assign(samplesPerBlock, 0.0f);
+  sampleRatios_.assign(samplesPerBlock, 0.0f);
+  sampleOutputGains_.assign(samplesPerBlock, 1.0f);
 
   // Initialise smoothed parameters
   smoothThreshold_.reset(sampleRate, kSmoothingRampSeconds);
@@ -114,6 +115,14 @@ void GuzvarizerProcessor::processBlock(juce::AudioBuffer<float> &buffer,
   if (numSamples == 0 || numChannels == 0)
     return;
 
+  // --- Dynamic Array Allocation Safety ---
+  const size_t requiredSize = static_cast<size_t>(numSamples);
+  if (sampleThresholds_.size() < requiredSize) {
+    sampleThresholds_.resize(requiredSize);
+    sampleRatios_.resize(requiredSize);
+    sampleOutputGains_.resize(requiredSize);
+  }
+
   // --- Sanitize Input (NaN/Inf protection) ---
   for (int ch = 0; ch < numChannels; ++ch) {
     float *data = buffer.getWritePointer(ch);
@@ -131,11 +140,8 @@ void GuzvarizerProcessor::processBlock(juce::AudioBuffer<float> &buffer,
   smoothRatio_.setTargetValue(pRatio_->load(std::memory_order_relaxed));
   smoothOutput_.setTargetValue(pOutput_->load(std::memory_order_relaxed));
 
-  const float threshold = smoothThreshold_.skip(numSamples);
   const float attack = smoothAttack_.skip(numSamples);
   const float release = smoothRelease_.skip(numSamples);
-  const float ratio = smoothRatio_.skip(numSamples);
-  const float outputGain = smoothOutput_.skip(numSamples);
 
   // --- Vibe mode morph ---
   const auto vibeIndex =
@@ -169,21 +175,24 @@ void GuzvarizerProcessor::processBlock(juce::AudioBuffer<float> &buffer,
   }
   guzvanje_.setLfoSync(lfoSync, lfoDivision, hostBpm);
 
-  // Process Gužvanje per-sample to populate bias arrays
+  // Process Gužvanje per-sample to populate arrays
   neon::dsp::GuzvanjeDsp::GuzvanjeBias guzBias;
   for (int i = 0; i < numSamples; ++i) {
     guzBias = guzvanje_.processSample();
-    guzThresholdBiases_[i] = guzBias.thresholdOffset;
-    guzRatioBiases_[i] = guzBias.ratioOffset;
+    sampleThresholds_[i] =
+        smoothThreshold_.getNextValue() + guzBias.thresholdOffset;
+    sampleRatios_[i] = smoothRatio_.getNextValue() + guzBias.ratioOffset;
+    sampleOutputGains_[i] =
+        juce::Decibels::decibelsToGain(smoothOutput_.getNextValue());
   }
 
   // --- Build compressor params with vibe biases ---
   neon::dsp::CompressorParams cparams;
-  cparams.thresholdDb = threshold; // vibe doesn't bias threshold
+  cparams.thresholdDb = 0.0f; // overriden by sampleThresholds_
   cparams.attackMs = std::max(0.1f, attack + vibePreset.attackBias);
   cparams.releaseMs = std::max(10.0f, release + vibePreset.releaseBias);
-  cparams.ratio = std::max(1.0f, ratio);
-  cparams.outputDb = outputGain;
+  cparams.ratio = 1.0f;    // overriden by sampleRatios_
+  cparams.outputDb = 0.0f; // overriden by sampleOutputGains_
   cparams.kneeWidthDb =
       std::max(0.5f, kDefaultKneeWidthDb + vibePreset.kneeBias);
   compressor_.setParams(cparams);
@@ -215,8 +224,8 @@ void GuzvarizerProcessor::processBlock(juce::AudioBuffer<float> &buffer,
   float *channelR = numChannels > 1 ? buffer.getWritePointer(1) : nullptr;
 
   const float peakGrDb = compressor_.processBlock(
-      channelL, channelR, numSamples, guzThresholdBiases_.data(),
-      guzRatioBiases_.data());
+      channelL, channelR, numSamples, sampleThresholds_.data(),
+      sampleRatios_.data(), sampleOutputGains_.data());
   toneShaper_.processBlock(channelL, channelR, numSamples);
 
   // --- Measure output peak + RMS ---
@@ -292,6 +301,18 @@ void GuzvarizerProcessor::setStateInformation(const void *data,
   }
 
   parameters_.replaceState(juce::ValueTree::fromXml(*xmlState));
+
+  // Re-init smoothers to avoid audible jumps on preset load
+  smoothThreshold_.setCurrentAndTargetValue(
+      pThreshold_->load(std::memory_order_relaxed));
+  smoothAttack_.setCurrentAndTargetValue(
+      pAttack_->load(std::memory_order_relaxed));
+  smoothRelease_.setCurrentAndTargetValue(
+      pRelease_->load(std::memory_order_relaxed));
+  smoothRatio_.setCurrentAndTargetValue(
+      pRatio_->load(std::memory_order_relaxed));
+  smoothOutput_.setCurrentAndTargetValue(
+      pOutput_->load(std::memory_order_relaxed));
 }
 
 } // namespace neon::host

@@ -21,7 +21,11 @@ Prije bilo kakvog koda obavezno procitaj redom:
 10. `docs/91_FRONTEND_AGENT_PHASED_TASKS.md`
 11. `docs/95_PHASE_REPORT_TEMPLATE.md`
 12. `docs/96_AGENT_EXECUTION_RULES.md`
-13. `assets/images/guzvarizer-ui-reference.png`
+13. `docs/reports/BF2-1_report.md`
+14. `docs/reports/BF2-2_report.md`
+15. `docs/reports/BF2-3_report.md`
+16. `docs/reports/BF2-4_5_report.md`
+17. `assets/images/guzvarizer-ui-reference.png`
 
 Tvoja pravila rada:
 
@@ -31,6 +35,7 @@ Tvoja pravila rada:
 - Koristi APVTS attachment pattern za binding audio parametara.
 - LFO UI mora biti disabled kad je `guzvanje_enabled = 0`.
 - U Tone Shaperu ne implementirati 2x `AIR`; drugi knob je `COLOR` (`air_freq`).
+- UI ne smije citati audio buffer direktno; koristi meter snapshot preko bridgea.
 
 Izvedba:
 
